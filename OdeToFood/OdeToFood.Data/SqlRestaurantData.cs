@@ -48,7 +48,7 @@ namespace OdeToFood.Data
         public IEnumerable<Restaurant> GetRestaurantsByName(string name)
         {
             var query = from r in db.Restaurants
-                        where r.Name.StartsWith(name) || string.IsNullOrEmpty(name)
+                        where r.Name.StartsWith(name, System.StringComparison.Ordinal) || string.IsNullOrEmpty(name)
                         orderby r.Name
                         select r;
             return query;
